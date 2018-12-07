@@ -14,15 +14,15 @@ INSERT INTO `people`
              `dob`, 
              `birthplace`,
              `race_id`,
-			 `image_url`,
-			 `thumb_url`
-			 ) 
+	     `image_url`,
+	     `thumb_url`
+	     ) 
 SELECT @jurisdiction AS `jurisdiction_id`, 
        -- "Broward" AS `reporting_entity`, 
        `id`, 
        `date`, 
-       Substring_index(`name`, " ", 1), 
-       Substring_index(`name`, " ", -(LENGTH(`name`) - LENGTH( REPLACE ( `name`, " ", "") ))),
+       Substring_index(`name`, " ", 1),  -- everything before the first space
+       Substring_index(`name`, " ", -(LENGTH(`name`) - LENGTH( REPLACE ( `name`, " ", "") ))),  -- everything after the first space
        `sex`, 
        `dob`, 
        `birthplace`,
